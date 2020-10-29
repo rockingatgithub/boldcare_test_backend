@@ -11,7 +11,7 @@ const customerSchema = new mongoose.Schema(
       required: true,
     },
     phoneNumber: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
@@ -20,5 +20,5 @@ const customerSchema = new mongoose.Schema(
   }
 );
 
-const Customer = mongoose.model("Product", customerSchema);
+const Customer = mongoose.model("Customer", customerSchema);
 module.exports = Customer;

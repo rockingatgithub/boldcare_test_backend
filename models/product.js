@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     price: {
-      type: Number,
+      type: String,
       required: true,
     },
     stars: {
@@ -25,4 +25,5 @@ const productSchema = new mongoose.Schema(
 );
 
 const Product = mongoose.model("Product", productSchema);
+
 module.exports = Product;
