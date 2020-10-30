@@ -13,8 +13,8 @@ module.exports.getReviews = async function (req, res) {
   let reviews = await Review.find({})
     .populate("productId")
     .populate("customerId")
-    .limit(10);
-  console.log(reviews[0]);
+    .limit(7);
+  // console.log(reviews[0]);
   return res.status(200).json({
     message: "review obtained",
     data: reviews,
@@ -24,7 +24,7 @@ module.exports.getReviews = async function (req, res) {
 module.exports.allUserReviews = async function (req, res) {
   let reviews = await Review.find({
     customerId: req.params.id,
-  }).limit(10);
+  }).limit(7);
   return res.status(200).json({
     message: "review obtained",
     data: reviews,
@@ -34,7 +34,7 @@ module.exports.allUserReviews = async function (req, res) {
 module.exports.allProductReviews = async function (req, res) {
   let reviews = await Review.find({
     productId: req.params.id,
-  }).limit(10);
+  }).limit(7);
   return res.status(200).json({
     message: "review obtained",
     data: reviews,
@@ -43,7 +43,7 @@ module.exports.allProductReviews = async function (req, res) {
 
 module.exports.allTypeReviews = async function (req, res) {
   if (req.params.type === "All") {
-    let reviews = await Review.find({}).limit(10);
+    let reviews = await Review.find({}).limit(7);
     return res.status(200).json({
       message: "review obtained",
       data: reviews,
@@ -51,10 +51,24 @@ module.exports.allTypeReviews = async function (req, res) {
   } else {
     let reviews = await Review.find({
       status: req.params.type,
-    }).limit(10);
+    }).limit(7);
     return res.status(200).json({
       message: "review obtained",
       data: reviews,
     });
   }
+};
+
+module.exports.getMoreReviews = async function (req, res) {
+  let num = parseInt(req.params.next);
+  let reviews = await Review.find({})
+    .populate("productId")
+    .populate("customerId")
+    .skip(num)
+    .limit(7);
+  // console.log(reviews[0]);
+  return res.status(200).json({
+    message: "review obtained",
+    data: reviews,
+  });
 };

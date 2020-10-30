@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect(`mongodb://localhost/reviewmanager`, {
+mongoose.connect(`mongodb+srv://sudhendra:raja@2509@cluster0.rhtev.mongodb.net/reviewdb?retryWrites=true&w=majority`, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
