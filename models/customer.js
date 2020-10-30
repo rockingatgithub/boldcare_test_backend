@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+// =================================schema for customers=============================================================
+
 const customerSchema = new mongoose.Schema(
   {
     name: {

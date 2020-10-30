@@ -1,5 +1,7 @@
 const Customer = require("../models/customer");
 
+// ====================================handling users routes and functions============================================
+
 module.exports.getUsers = async function (req, res) {
   let user = await Customer.find({}).limit(10);
   res.status(200).json({
@@ -8,10 +10,10 @@ module.exports.getUsers = async function (req, res) {
   });
 };
 
-module.exports.userInfo = async function(req, res){
-  let user = await Customer.findById(req.params.id)
+module.exports.userInfo = async function (req, res) {
+  let user = await Customer.findById(req.params.id);
   res.status(200).json({
     message: "This is info user",
     data: user,
   });
-}
+};

@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+
+// ===============================================connecting to remote databse=======================================
+
 mongoose.connect(`mongodb+srv://sudhendra:raja@2509@cluster0.rhtev.mongodb.net/reviewdb?retryWrites=true&w=majority`, {
   useUnifiedTopology: true,
   useNewUrlParser: true,

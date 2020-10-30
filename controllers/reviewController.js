@@ -1,5 +1,7 @@
 const Review = require("../models/review");
 
+// ================================handling review routes and functions===================================================
+
 module.exports.addReview = async function (req, res) {
   // console.log(req.body);
   let review = await Review.create(req.body);

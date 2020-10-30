@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Customer = require("./customer");
 const Product = require("./product");
 
+// =================================schema for reviews=================================================================
+
 const reviewSchema = new mongoose.Schema(
   {
     title: {

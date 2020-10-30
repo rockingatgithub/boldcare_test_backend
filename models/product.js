@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+// =================================schema for products=============================================================
+
 const productSchema = new mongoose.Schema(
   {
     name: {
