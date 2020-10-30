@@ -15,7 +15,7 @@ module.exports.getReviews = async function (req, res) {
   let reviews = await Review.find({})
     .populate("productId")
     .populate("customerId")
-    .limit(7);
+    .limit(7).sort({ createdAt: -1 });
   // console.log(reviews[0]);
   return res.status(200).json({
     message: "review obtained",
@@ -26,7 +26,7 @@ module.exports.getReviews = async function (req, res) {
 module.exports.allUserReviews = async function (req, res) {
   let reviews = await Review.find({
     customerId: req.params.id,
-  }).limit(7);
+  }).limit(7).sort({ createdAt: -1 });
   return res.status(200).json({
     message: "review obtained",
     data: reviews,
@@ -36,7 +36,7 @@ module.exports.allUserReviews = async function (req, res) {
 module.exports.allProductReviews = async function (req, res) {
   let reviews = await Review.find({
     productId: req.params.id,
-  }).limit(7);
+  }).limit(7).sort({ createdAt: -1 });
   return res.status(200).json({
     message: "review obtained",
     data: reviews,
@@ -45,7 +45,7 @@ module.exports.allProductReviews = async function (req, res) {
 
 module.exports.allTypeReviews = async function (req, res) {
   if (req.params.type === "All") {
-    let reviews = await Review.find({}).limit(7);
+    let reviews = await Review.find({}).limit(7).sort({ createdAt: -1 });
     return res.status(200).json({
       message: "review obtained",
       data: reviews,
@@ -67,7 +67,7 @@ module.exports.getMoreReviews = async function (req, res) {
     .populate("productId")
     .populate("customerId")
     .skip(num)
-    .limit(7);
+    .limit(7).sort({ createdAt: -1 });
   // console.log(reviews[0]);
   return res.status(200).json({
     message: "review obtained",
