@@ -10,7 +10,11 @@ module.exports.addReview = async function (req, res) {
 };
 
 module.exports.getReviews = async function (req, res) {
-  let reviews = await Review.find({}).limit(10);
+  let reviews = await Review.find({})
+    .populate("productId")
+    .populate("customerId")
+    .limit(10);
+  console.log(reviews[0]);
   return res.status(200).json({
     message: "review obtained",
     data: reviews,
